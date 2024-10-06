@@ -10,6 +10,7 @@ module raytracing_color
 
     private
     public  :: color_type
+    public  :: write(formatted)
 
 
 
