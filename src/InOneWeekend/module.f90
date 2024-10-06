@@ -19,6 +19,10 @@ module raytracing_in_one_weekend
 
     subroutine render_image01
 
+        use, non_intrinsic :: raytracing_color
+
+
+
         integer, parameter :: image_height = 256
         integer, parameter :: image_width  = 256
         integer, parameter :: white_point  = 255
@@ -59,22 +63,19 @@ module raytracing_in_one_weekend
         do iter_w = 0, iter_w_max
         block
 
-            real(real64) :: red, green, blue
+            type(color_type) :: pixel_color
             !! red/green/blue components are represented internally by real-valued variables
             !! that range from 0.0 to 1.0
 
 
 
-            red   = real( iter_w, kind = real64 ) / iter_w_max
-            green = real( iter_h, kind = real64 ) / iter_h_max
-            blue  = 0.0_real64
+            pixel_color%red   = real( iter_w, kind = real64 ) / iter_w_max
+            pixel_color%green = real( iter_h, kind = real64 ) / iter_h_max
+            pixel_color%blue  = 0.0_real64
 
 
 
-            write( unit = write_unit, fmt = '(I0,2(1X,I0))' ) &!
-                floor( white_point * red   ) , &!
-                floor( white_point * green ) , &!
-                floor( white_point * blue  )
+            write( unit = write_unit, fmt = * ) pixel_color
 
         end block
         end do

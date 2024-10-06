@@ -3,4 +3,8 @@ add_library(
     module.f90
 )
 
+
+
+target_link_libraries( _raytracing_one_weekend _raytracing_color )
+
 # EOF
