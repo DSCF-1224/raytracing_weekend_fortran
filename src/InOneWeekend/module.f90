@@ -20,6 +20,7 @@ module raytracing_in_one_weekend
     subroutine render_image01
 
         use, non_intrinsic :: raytracing_color
+        use, non_intrinsic :: raytracing_ppm_image
 
 
 
