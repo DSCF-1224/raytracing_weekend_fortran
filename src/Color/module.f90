@@ -10,6 +10,7 @@ module raytracing_color
 
     private
     public  :: color_type
+    public  :: white_point
     public  :: write(formatted)
 
 
@@ -28,7 +29,7 @@ module raytracing_color
 
 
 
-    integer, parameter, private :: white_point = 255
+    integer, parameter :: white_point = 255
 
 
 
