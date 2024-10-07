@@ -1,0 +1,2 @@
+module raytracing_ppm_image
+end module raytracing_ppm_image
