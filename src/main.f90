@@ -9,5 +9,6 @@ program raytracing
     print *, compiler_options()
 
     call render_image01
+    call render_image02
 
 end program raytracing

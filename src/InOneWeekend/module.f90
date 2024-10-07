@@ -10,6 +10,7 @@ module raytracing_in_one_weekend
 
     private
     public  :: render_image01
+    public  :: render_image02
 
 
 
@@ -85,5 +86,13 @@ module raytracing_in_one_weekend
         close( write_unit )
 
     end subroutine render_image01
+
+
+
+    subroutine render_image02
+
+        print *, "TEST: image 02"
+
+    end subroutine render_image02
 
 end module raytracing_in_one_weekend
