@@ -53,9 +53,12 @@ module raytracing_in_one_weekend
 
 
 
-        write( unit = write_unit, fmt = '(A)'        ) 'P3'
-        write( unit = write_unit, fmt = '(I0,1X,I0)' ) image_width, image_height
-        write( unit = write_unit, fmt = '(I0)'       ) white_point
+        call write_ppm_image_header( &!
+            unit         = write_unit   , &!
+            image_width  = image_width  , &!
+            image_height = image_height , &!
+            white_point  = white_point    &!
+        )
 
 
 
