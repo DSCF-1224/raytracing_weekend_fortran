@@ -25,7 +25,6 @@ module raytracing_in_one_weekend
 
         integer, parameter :: image_height = 256
         integer, parameter :: image_width  = 256
-        integer, parameter :: white_point  = 255
 
         integer, parameter :: iter_h_max   = image_height - 1
         integer, parameter :: iter_w_max   = image_width  - 1
