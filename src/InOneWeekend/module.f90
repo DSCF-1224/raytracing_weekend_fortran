@@ -57,8 +57,7 @@ module raytracing_in_one_weekend
         call write_ppm_image_header( &!
             unit         = write_unit   , &!
             image_width  = image_width  , &!
-            image_height = image_height , &!
-            white_point  = white_point    &!
+            image_height = image_height   &!
         )
 
 

@@ -1,6 +1,7 @@
 module raytracing_ppm_image
 
-    use, intrinsic :: iso_fortran_env
+    use,     intrinsic :: iso_fortran_env
+    use, non_intrinsic :: raytracing_color
 
 
 
@@ -12,11 +13,11 @@ module raytracing_ppm_image
 
 
 
-    subroutine write_ppm_image_header( unit, image_width, image_height, white_point )
+    subroutine write_ppm_image_header( unit, image_width, image_height )
 
         integer, intent(in) :: unit
 
-        integer, intent(in) :: image_width, image_height, white_point
+        integer, intent(in) :: image_width, image_height
 
 
 
