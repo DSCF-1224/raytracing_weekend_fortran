@@ -19,14 +19,11 @@ module raytracing_in_one_weekend
         module subroutine render_image01
         end  subroutine render_image01
 
+
+
+        module subroutine render_image02
+        end  subroutine render_image02
+
     end interface
-
-
-
-    subroutine render_image02
-
-        print *, "TEST: image 02"
-
-    end subroutine render_image02
 
 end module raytracing_in_one_weekend
