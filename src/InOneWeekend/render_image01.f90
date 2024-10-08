@@ -8,7 +8,7 @@ submodule (raytracing_in_one_weekend) imp_render_image01
 
 
 
-    subroutine render_image01
+    module procedure render_image01
 
         use, non_intrinsic :: raytracing_color
         use, non_intrinsic :: raytracing_ppm_image
@@ -78,6 +78,6 @@ submodule (raytracing_in_one_weekend) imp_render_image01
 
         close( write_unit )
 
-    end subroutine render_image01
+    end procedure render_image01
 
 end submodule imp_render_image01
