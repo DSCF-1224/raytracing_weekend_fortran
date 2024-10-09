@@ -17,6 +17,7 @@ set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/fortran-modules)
 add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/Color        )
 add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/InOneWeekend )
 add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/PPM_Image    )
+add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/Vec3         )
 
 
 

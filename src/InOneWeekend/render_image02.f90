@@ -1,5 +1,9 @@
 submodule (raytracing_in_one_weekend) imp_render_image02
 
+    use, non_intrinsic :: raytracing_vec3
+
+
+
     implicit none
 
 
@@ -32,10 +36,13 @@ submodule (raytracing_in_one_weekend) imp_render_image02
 
         ! Camera
 
-        real(real64), parameter :: focal_length    = 1.0_real64
-        real(real64), parameter :: viewport_height = 2.0_real64
-        real(real64), parameter :: viewport_width  = viewport_height * aspect_ratio
+        real(real64)    , parameter :: focal_length    = 1.0_real64
+        real(real64)    , parameter :: viewport_height = 2.0_real64
+        real(real64)    , parameter :: viewport_width  = viewport_height * aspect_ratio
+        type(vec3_type) , parameter :: camera_center   = vec3_type( x = 0.0_real64, y = 0.0_real64, z = 0.0_real64 )
 
+        type(vec3_type) , parameter :: viewport_u      = vec3_type( x = viewport_width , y =   0.0_real64      , z = 0.0_real64 )
+        type(vec3_type) , parameter :: viewport_v      = vec3_type( x = 0.0_real64     , y = - viewport_height , z = 0.0_real64 )
 
     end procedure render_image02
 
