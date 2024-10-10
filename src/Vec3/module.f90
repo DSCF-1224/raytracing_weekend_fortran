@@ -10,6 +10,7 @@ module raytracing_vec3
 
     private
     public  :: operator(*)
+    public  :: operator(/)
     public  :: vec3_type
 
 
@@ -35,5 +36,21 @@ module raytracing_vec3
         end function mul_vec3_real64
 
     end interface operator(*)
+
+
+
+    interface operator(/)
+
+        module pure elemental function div_vec3_real64( lhs, rhs ) result( new_vec3 )
+
+            type(vec3_type), intent(in) :: lhs
+
+            real(real64), intent(in) :: rhs
+
+            type(vec3_type) :: new_vec3
+
+        end function div_vec3_real64
+
+    end interface operator(/)
 
 end module raytracing_vec3
