@@ -114,6 +114,21 @@ submodule (raytracing_in_one_weekend) imp_render_image02
 
 
             do iter_w = 0, iter_w_max
+            block
+
+                type(vec3_type) :: pixel_center
+                type(vec3_type) :: ray_direction
+
+
+
+                pixel_center &!
+                    = viewport_upper_left        &!
+                    + ( iter_w * pixel_delta_u ) &!
+                    + ( iter_h * pixel_delta_v )
+
+                ray_direction = pixel_center - camera_center
+
+            end block
             end do
 
         end do
