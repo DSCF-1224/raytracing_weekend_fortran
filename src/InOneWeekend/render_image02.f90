@@ -46,6 +46,9 @@ submodule (raytracing_in_one_weekend) imp_render_image02
 
 
 
+        integer :: write_unit
+        !! the unit number to save the rendered image
+
         type(vec3_type) :: pixel00_loc
         type(vec3_type) :: pixel_delta_u
         type(vec3_type) :: pixel_delta_v
@@ -65,6 +68,20 @@ submodule (raytracing_in_one_weekend) imp_render_image02
         pixel00_loc &!
             = viewport_upper_left &!
             + 0.5_real64 * ( pixel_delta_u + pixel_delta_v )
+
+
+
+        open( &!
+            newunit = write_unit    , &!
+            file    = 'image02.ppm' , &!
+            action  = 'write'       , &!
+            form    = 'formatted'   , &!
+            status  = 'unknown'       &!
+        )
+
+
+
+        close( write_unit )
 
     end procedure render_image02
 
