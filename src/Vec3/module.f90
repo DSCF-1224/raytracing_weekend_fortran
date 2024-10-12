@@ -55,6 +55,18 @@ module raytracing_vec3
 
     interface operator(*)
 
+        module pure elemental function mul_integer_vec3( lhs, rhs ) result( new_vec3 )
+
+            integer, intent(in) :: lhs
+
+            type(vec3_type), intent(in) :: rhs
+
+            type(vec3_type) :: new_vec3
+
+        end function mul_integer_vec3
+
+
+
         module pure elemental function mul_real64_vec3( lhs, rhs ) result( new_vec3 )
 
             real(real64), intent(in) :: lhs

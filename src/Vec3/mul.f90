@@ -8,6 +8,14 @@ submodule (raytracing_vec3) imp_mul
 
 
 
+    module procedure mul_integer_vec3
+
+        new_vec3 = real( lhs, kind = real64 ) * rhs
+
+    end procedure mul_integer_vec3
+
+
+
     module procedure mul_real64_vec3
 
         new_vec3%x = lhs * rhs%x
