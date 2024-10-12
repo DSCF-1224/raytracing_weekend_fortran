@@ -3,6 +3,7 @@ add_library(
     div.f90
     module.f90
     mul.f90
+    sub.f90
 )
 
 # EOF
