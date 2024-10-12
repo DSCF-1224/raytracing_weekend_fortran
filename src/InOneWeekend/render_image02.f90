@@ -33,6 +33,9 @@ submodule (raytracing_in_one_weekend) imp_render_image02
             )
         !! calculated image height (ensured that it's at least 1)
 
+        integer, parameter :: iter_h_max   = image_height - 1
+        integer, parameter :: iter_w_max   = image_width  - 1
+
 
 
         ! Camera
@@ -46,6 +49,12 @@ submodule (raytracing_in_one_weekend) imp_render_image02
         type(vec3_type) , parameter :: viewport_v      = vec3_type( x = 0.0_real64     , y = - viewport_height , z = 0.0_real64 )
 
 
+
+        integer :: iter_h
+        !! A support variable for this `SUBROUTINE`
+
+        integer :: iter_w
+        !! A support variable for this `SUBROUTINE`
 
         integer :: write_unit
         !! the unit number to save the rendered image
@@ -87,6 +96,31 @@ submodule (raytracing_in_one_weekend) imp_render_image02
             image_width  = image_width  , &!
             image_height = image_height   &!
         )
+
+
+
+        do iter_h = 0, iter_h_max
+
+            ! Write progress bar
+
+            write( unit = output_unit, fmt = '(A,A,I3,A)', advance = 'no' ) &!
+                char(13)                                                , &!
+                'Scan lines remaining: '                                , &!
+                floor( 100 * real( iter_h_max - iter_h ) / iter_h_max ) , &!
+                '%'
+
+            flush( unit = output_unit )
+
+
+
+            do iter_w = 0, iter_w_max
+            end do
+
+        end do
+
+
+
+        write( unit = output_unit, fmt = '(/,A)', advance = 'yes' ) 'DONE !'
 
 
 
