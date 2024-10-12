@@ -1,6 +1,7 @@
 submodule (raytracing_in_one_weekend) imp_render_image02
 
     use, non_intrinsic :: raytracing_ppm_image
+    use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_vec3
 
 
@@ -116,6 +117,7 @@ submodule (raytracing_in_one_weekend) imp_render_image02
             do iter_w = 0, iter_w_max
             block
 
+                type(ray_type)  :: ray
                 type(vec3_type) :: pixel_center
                 type(vec3_type) :: ray_direction
 
@@ -127,6 +129,9 @@ submodule (raytracing_in_one_weekend) imp_render_image02
                     + ( iter_h * pixel_delta_v )
 
                 ray_direction = pixel_center - camera_center
+
+                ray%origin    = camera_center
+                ray%direction = ray_direction
 
             end block
             end do
