@@ -9,6 +9,7 @@ module raytracing_vec3
 
 
     private
+    public  :: operator(+)
     public  :: operator(-)
     public  :: operator(*)
     public  :: operator(/)
