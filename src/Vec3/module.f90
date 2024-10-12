@@ -24,6 +24,20 @@ module raytracing_vec3
 
 
 
+    interface operator(+)
+
+        module pure elemental function add_vec3( lhs, rhs ) result( new_vec3 )
+
+            type(vec3_type), intent(in) :: lhs, rhs
+
+            type(vec3_type) :: new_vec3
+
+        end function add_vec3
+
+    end interface operator(+)
+
+
+
     interface operator(-)
 
         module pure elemental function sub_vec3( lhs, rhs ) result( new_vec3 )
