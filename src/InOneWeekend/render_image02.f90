@@ -1,5 +1,6 @@
 submodule (raytracing_in_one_weekend) imp_render_image02
 
+    use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_vec3
 
 
@@ -77,6 +78,14 @@ submodule (raytracing_in_one_weekend) imp_render_image02
             action  = 'write'       , &!
             form    = 'formatted'   , &!
             status  = 'unknown'       &!
+        )
+
+
+
+        call write_ppm_image_header( &!
+            unit         = write_unit   , &!
+            image_width  = image_width  , &!
+            image_height = image_height   &!
         )
 
 
