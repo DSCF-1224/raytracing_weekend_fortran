@@ -10,9 +10,9 @@ submodule (raytracing_vec3) imp_sub
 
     module procedure sub_vec3
 
-        new_vec3%x = lhs%x * rhs%x
-        new_vec3%y = lhs%y * rhs%y
-        new_vec3%z = lhs%z * rhs%z
+        new_vec3%x = lhs%x - rhs%x
+        new_vec3%y = lhs%y - rhs%y
+        new_vec3%z = lhs%z - rhs%z
 
     end procedure sub_vec3
 
