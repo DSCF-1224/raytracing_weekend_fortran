@@ -44,6 +44,16 @@ submodule (raytracing_in_one_weekend) imp_render_image02
         type(vec3_type) , parameter :: viewport_u      = vec3_type( x = viewport_width , y =   0.0_real64      , z = 0.0_real64 )
         type(vec3_type) , parameter :: viewport_v      = vec3_type( x = 0.0_real64     , y = - viewport_height , z = 0.0_real64 )
 
+
+
+        type(vec3_type) :: pixel_delta_u
+        type(vec3_type) :: pixel_delta_v
+
+
+
+        pixel_delta_u = viewport_u / image_width
+        pixel_delta_v = viewport_v / image_height
+
     end procedure render_image02
 
 end submodule imp_render_image02
