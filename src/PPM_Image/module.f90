@@ -9,6 +9,11 @@ module raytracing_ppm_image
 
 
 
+    private
+    public  :: write_ppm_image_header
+
+
+
     contains
 
 
