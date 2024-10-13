@@ -17,6 +17,7 @@ module raytracing_vec3
     public  :: length
     public  :: length_squared
     public  :: vec3_type
+    public  :: unit_vector
 
 
 
@@ -163,5 +164,19 @@ module raytracing_vec3
         end function length_squared_vec3
 
     end interface length_squared
+
+
+
+    interface unit_vector
+
+        module pure elemental function unit_vector_vec3( vec3 )
+
+            type(vec3_type), intent(in) :: vec3
+
+            type(vec3_type) :: unit_vector_vec3
+
+        end function unit_vector_vec3
+
+    end interface unit_vector
 
 end module raytracing_vec3

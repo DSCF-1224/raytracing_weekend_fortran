@@ -8,6 +8,7 @@ add_library(
     module.f90
     mul.f90
     sub.f90
+    unit_vector.f90
 )
 
 # EOF
