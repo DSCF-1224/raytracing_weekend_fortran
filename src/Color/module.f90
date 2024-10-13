@@ -10,6 +10,8 @@ module raytracing_color
 
     private
     public  :: color_type
+    public  :: operator(+)
+    public  :: operator(*)
     public  :: white_point
     public  :: write(formatted)
 
@@ -24,6 +26,36 @@ module raytracing_color
 
 
     integer, parameter :: white_point = 255
+
+
+
+    interface operator(+)
+
+        module pure elemental function add_color( lhs, rhs ) result( new_color )
+
+            type(color_type), intent(in) :: lhs, rhs
+
+            type(color_type) :: new_color
+
+        end function add_color
+
+    end interface operator(+)
+
+
+
+    interface operator(*)
+
+        module pure elemental function mul_real64_color( lhs, rhs ) result( new_color )
+
+            real(real64), intent(in) :: lhs
+
+            type(color_type), intent(in) :: rhs
+
+            type(color_type) :: new_color
+
+        end function mul_real64_color
+
+    end interface operator(*)
 
 
 
