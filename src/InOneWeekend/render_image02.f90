@@ -32,6 +32,10 @@ submodule (raytracing_in_one_weekend) imp_render_image02
         unit_direction = unit_vector( ray%direction )
         a              = 0.5_real64 * ( unit_direction%y + 1.0_real64 )
 
+        color &!
+            = ( 1.0_real64 - a ) * color_type( red = 1.0_real64, green = 1.0_real64, blue = 1.0_real64 ) &!
+            +                a   * color_type( red = 0.5_real64, green = 0.7_real64, blue = 1.0_real64 )
+
     end function ray_color
 
 
@@ -139,9 +143,10 @@ submodule (raytracing_in_one_weekend) imp_render_image02
             do iter_w = 0, iter_w_max
             block
 
-                type(ray_type)  :: ray
-                type(vec3_type) :: pixel_center
-                type(vec3_type) :: ray_direction
+                type(color_type) :: color
+                type(ray_type)   :: ray
+                type(vec3_type)  :: pixel_center
+                type(vec3_type)  :: ray_direction
 
 
 
@@ -154,6 +159,10 @@ submodule (raytracing_in_one_weekend) imp_render_image02
 
                 ray%origin    = camera_center
                 ray%direction = ray_direction
+
+                color = ray_color( ray )
+
+                write( unit = write_unit, fmt = * ) color
 
             end block
             end do
