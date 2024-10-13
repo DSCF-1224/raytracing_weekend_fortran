@@ -15,6 +15,27 @@ submodule (raytracing_in_one_weekend) imp_render_image02
 
 
 
+    pure elemental function ray_color( ray ) result( color )
+
+        type(ray_type), intent(in) :: ray
+
+        type(color_type) :: color
+
+
+
+        real(real64) :: a
+
+        type(vec3_type) :: unit_direction
+
+
+
+        unit_direction = unit_vector( ray%direction )
+        a              = 0.5_real64 * ( unit_direction%y + 1.0_real64 )
+
+    end function ray_color
+
+
+
     module procedure render_image02
 
         ! Image
