@@ -11,6 +11,7 @@ module raytracing_in_one_weekend
     private
     public  :: render_image01
     public  :: render_image02
+    public  :: render_image03
 
 
 
@@ -23,6 +24,11 @@ module raytracing_in_one_weekend
 
         module subroutine render_image02
         end  subroutine render_image02
+
+
+
+        module subroutine render_image03
+        end  subroutine render_image03
 
     end interface
 
