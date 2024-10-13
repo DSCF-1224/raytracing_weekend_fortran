@@ -13,7 +13,11 @@ module raytracing_vec3
     public  :: operator(-)
     public  :: operator(*)
     public  :: operator(/)
+    public  :: dot_product
+    public  :: length
+    public  :: length_squared
     public  :: vec3_type
+    public  :: unit_vector
 
 
 
@@ -118,5 +122,61 @@ module raytracing_vec3
         end function div_vec3_real64
 
     end interface operator(/)
+
+
+
+    interface dot_product
+
+        module pure elemental function dot_product_vec3( lhs, rhs )
+
+            type(vec3_type), intent(in) :: lhs, rhs
+
+            real(real64) :: dot_product_vec3
+
+        end function dot_product_vec3
+
+    end interface dot_product
+
+
+
+    interface length
+
+        module pure elemental function length_vec3( vec3 )
+
+            type(vec3_type), intent(in) :: vec3
+
+            real(real64) :: length_vec3
+
+        end function length_vec3
+
+    end interface length
+
+
+
+    interface length_squared
+
+        module pure elemental function length_squared_vec3( vec3 )
+
+            type(vec3_type), intent(in) :: vec3
+
+            real(real64) :: length_squared_vec3
+
+        end function length_squared_vec3
+
+    end interface length_squared
+
+
+
+    interface unit_vector
+
+        module pure elemental function unit_vector_vec3( vec3 )
+
+            type(vec3_type), intent(in) :: vec3
+
+            type(vec3_type) :: unit_vector_vec3
+
+        end function unit_vector_vec3
+
+    end interface unit_vector
 
 end module raytracing_vec3
