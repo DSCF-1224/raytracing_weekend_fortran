@@ -14,6 +14,7 @@ module raytracing_vec3
     public  :: operator(*)
     public  :: operator(/)
     public  :: dot_product
+    public  :: length_squared
     public  :: vec3_type
 
 
@@ -133,5 +134,19 @@ module raytracing_vec3
         end function dot_product_vec3
 
     end interface dot_product
+
+
+
+    interface length_squared
+
+        module pure elemental function length_squared_vec3( vec3 )
+
+            type(vec3_type), intent(in) :: vec3
+
+            real(real64) :: length_squared_vec3
+
+        end function length_squared_vec3
+
+    end interface length_squared
 
 end module raytracing_vec3
