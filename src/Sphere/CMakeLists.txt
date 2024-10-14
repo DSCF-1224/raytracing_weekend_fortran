@@ -7,6 +7,7 @@ add_library(
 
 target_link_libraries( _raytracing_ray _raytracing_hit_record )
 target_link_libraries( _raytracing_ray _raytracing_hittable   )
+target_link_libraries( _raytracing_ray _raytracing_ray        )
 target_link_libraries( _raytracing_ray _raytracing_vec3       )
 
 # EOF
