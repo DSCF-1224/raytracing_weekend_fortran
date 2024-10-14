@@ -45,6 +45,16 @@ module raytracing_vec3
 
     interface operator(-)
 
+        module pure elemental function neg_vec3( vec3 ) result( new_vec3 )
+
+            type(vec3_type), intent(in) :: vec3
+
+            type(vec3_type) :: new_vec3
+
+        end function neg_vec3
+
+
+
         module pure elemental function sub_vec3( lhs, rhs ) result( new_vec3 )
 
             type(vec3_type), intent(in) :: lhs, rhs
