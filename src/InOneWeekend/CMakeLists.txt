@@ -13,6 +13,7 @@ add_library(
 target_link_libraries( _raytracing_one_weekend _raytracing_color     )
 target_link_libraries( _raytracing_one_weekend _raytracing_ppm_image )
 target_link_libraries( _raytracing_one_weekend _raytracing_ray       )
+target_link_libraries( _raytracing_one_weekend _raytracing_sphere    )
 target_link_libraries( _raytracing_one_weekend _raytracing_vec3      )
 
 # EOF

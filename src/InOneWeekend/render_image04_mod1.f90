@@ -3,6 +3,7 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
     use, non_intrinsic :: raytracing_color
     use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_ray
+    use, non_intrinsic :: raytracing_sphere
     use, non_intrinsic :: raytracing_vec3
 
 
