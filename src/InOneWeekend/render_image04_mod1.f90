@@ -26,9 +26,9 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-    pure elemental function hit_sphere( sphere, ray )
+    pure elemental function hit_sphere( target_sphere, ray )
 
-        type(sphere_type), intent(in) :: sphere
+        type(sphere_type), intent(in) :: target_sphere
 
         type(ray_type), intent(in) :: ray
 
@@ -42,10 +42,10 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-        oc           = sphere%center - ray%origin
+        oc           = target_sphere%center - ray%origin
         a            = length_squared( ray%direction )
         h            = dot_product( ray%direction , oc )
-        c            = length_squared( oc ) - sphere%radius * sphere%radius
+        c            = length_squared( oc ) - target_sphere%radius * target_sphere%radius
         discriminant = h * h - a * c
 
 
