@@ -16,6 +16,8 @@ module raytracing_hit_record
 
     type :: hit_record_type
 
+        logical, public :: front_face
+
         real(real64), public :: t
 
         type(vec3_type), public :: point
