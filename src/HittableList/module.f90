@@ -1,5 +1,6 @@
 module raytracing_hittable_list
 
+    use, non_intrinsic :: raytracing_hittable
     use, non_intrinsic :: raytracing_hittable_list_item
 
 
