@@ -1,6 +1,7 @@
 add_library(
     _raytracing_hit_record
     module.f90
+    set_face_normal.f90
 )
 
 
