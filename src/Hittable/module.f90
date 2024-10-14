@@ -16,6 +16,31 @@ module raytracing_hittable
 
 
     type, abstract :: hittable_class
+
+        contains
+
+        procedure( hit_abstract ), deferred, pass, public :: hit
+
     end type hittable_class
+
+
+
+    interface
+
+        module subroutine hit_abstract( self, ray, t_min, t_max, hit_stat, hit_record )
+
+            class(hittable_class), intent(in) :: self
+
+            type(ray_type), intent(in) :: ray
+
+            real(real64), intent(in) :: t_min, t_max
+
+            logical, intent(out) :: hit_stat
+
+            type(hit_record_type), intent(out) :: hit_record
+
+        end subroutine hit_abstract
+
+    end interface
 
 end module raytracing_hittable
