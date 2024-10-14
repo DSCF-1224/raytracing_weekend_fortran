@@ -4,6 +4,7 @@ add_library(
     render_image01.f90
     render_image02.f90
     render_image03.f90
+    render_image04.f90
 )
 
 
