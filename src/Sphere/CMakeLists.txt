@@ -1,5 +1,6 @@
 add_library(
     _raytracing_sphere
+    hit.f90
     module.f90
 )
 
