@@ -12,5 +12,6 @@ program raytracing
     call render_image02
     call render_image03
     call render_image04
+    call render_image04_mod1
 
 end program raytracing
