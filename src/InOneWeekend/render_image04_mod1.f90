@@ -1,6 +1,7 @@
 submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
     use, non_intrinsic :: raytracing_color
+    use, non_intrinsic :: raytracing_hit_record
     use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_sphere
@@ -26,41 +27,7 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-    pure elemental function hit_sphere( target_sphere, ray )
-
-        type(sphere_type), intent(in) :: target_sphere
-
-        type(ray_type), intent(in) :: ray
-
-        real(real64) :: hit_sphere
-
-
-
-        real(real64) :: a, c, discriminant, h
-
-        type(vec3_type) :: oc
-
-
-
-        oc           = target_sphere%center - ray%origin
-        a            = length_squared( ray%direction )
-        h            = dot_product( ray%direction , oc )
-        c            = length_squared( oc ) - target_sphere%radius * target_sphere%radius
-        discriminant = h * h - a * c
-
-
-
-        if ( discriminant .lt. 0.0_real64 ) then
-            hit_sphere = -1.0_real64
-        else
-            hit_sphere = ( h - sqrt( discriminant ) ) / a
-        end if
-
-    end function hit_sphere
-
-
-
-    pure elemental function ray_color( ray ) result( color )
+    function ray_color( ray ) result( color )
 
         type(ray_type), intent(in) :: ray
 
@@ -68,32 +35,35 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-        real(real64) :: a, t
+        logical :: hit_stat
+
+        real(real64) :: a
+
+        type(hit_record_type) :: hit_record
 
         type(vec3_type) :: unit_direction
 
 
 
-        t = hit_sphere( sphere, ray )
+        call sphere%hit( &!
+            ray        = ray                , &!
+            t_min      = 0.0_real64         , &!
+            t_max      = huge( 0.0_real64 ) , &!
+            hit_stat   = hit_stat           , &!
+            hit_record = hit_record           &!
+        )
 
 
 
-        if ( t .gt. 0.0_real64 ) then
-        block
+        if ( hit_stat ) then
 
-            type(vec3_type) :: n
-
-
-
-            n           = unit_vector( ray%at( t ) - sphere%center )
-            color%red   = n%x + 1.0_real64
-            color%green = n%y + 1.0_real64
-            color%blue  = n%z + 1.0_real64
+            color%red   = hit_record%normal%x + 1.0_real64
+            color%green = hit_record%normal%y + 1.0_real64
+            color%blue  = hit_record%normal%z + 1.0_real64
             color       = 0.5_real64 * color
 
             return
 
-        end block
         end if
 
 
