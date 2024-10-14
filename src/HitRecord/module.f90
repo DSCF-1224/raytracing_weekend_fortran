@@ -1,0 +1,2 @@
+module raytracing_hit_record
+end module raytracing_hit_record
