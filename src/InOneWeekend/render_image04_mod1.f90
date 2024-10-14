@@ -12,11 +12,13 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-    real(real64), parameter :: sphere_radius = 0.5_real64
-
     type(color_type), parameter :: color_red = color_type( red = 1.0_real64, green = 0.0_real64, blue = 0.0_real64 )
 
-    type(vec3_type), parameter :: sphere_center = vec3_type( 0.0_real64, 0.0_real64, -1.0_real64 )
+    type(sphere_type), parameter :: sphere = &!
+        sphere_type( &!
+            center = vec3_type( 0.0_real64, 0.0_real64, -1.0_real64 ) , &!
+            radius = 0.5_real64                                         &!
+        )
 
 
 
@@ -24,11 +26,9 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-    pure elemental function hit_sphere( center, radius, ray )
+    pure elemental function hit_sphere( sphere, ray )
 
-        type(vec3_type), intent(in) :: center
-
-        real(real64), intent(in) :: radius
+        type(sphere_type), intent(in) :: sphere
 
         type(ray_type), intent(in) :: ray
 
@@ -42,10 +42,10 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-        oc           = center - ray%origin
+        oc           = sphere%center - ray%origin
         a            = length_squared( ray%direction )
         h            = dot_product( ray%direction , oc )
-        c            = length_squared( oc ) - radius * radius
+        c            = length_squared( oc ) - sphere%radius * sphere%radius
         discriminant = h * h - a * c
 
 
@@ -74,7 +74,7 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-        t = hit_sphere( sphere_center, sphere_radius, ray )
+        t = hit_sphere( sphere, ray )
 
 
 
@@ -85,7 +85,7 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
 
 
-            n           = unit_vector( ray%at( t ) - sphere_center )
+            n           = unit_vector( ray%at( t ) - sphere%center )
             color%red   = n%x + 1.0_real64
             color%green = n%y + 1.0_real64
             color%blue  = n%z + 1.0_real64
