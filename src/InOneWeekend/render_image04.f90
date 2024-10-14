@@ -35,24 +35,24 @@ submodule (raytracing_in_one_weekend) imp_render_image04
 
 
 
-        real(real64) :: a, b, c, discriminant
+        real(real64) :: a, c, discriminant, h
 
         type(vec3_type) :: oc
 
 
 
         oc           = center - ray%origin
-        a            =               dot_product( ray%direction , ray%direction )
-        b            = -2.0_real64 * dot_product( ray%direction , oc            )
-        c            =               dot_product( oc            , oc            ) - radius * radius
-        discriminant = b * b - 4.0_real64 * a * c
+        a            = length_squared( ray%direction )
+        h            = dot_product( ray%direction , oc )
+        c            = length_squared( oc ) - radius * radius
+        discriminant = h * h - a * c
 
 
 
         if ( discriminant .lt. 0.0_real64 ) then
             hit_sphere = -1.0_real64
         else
-            hit_sphere = ( - b - sqrt( discriminant ) ) / ( 2.0_real64 * a )
+            hit_sphere = ( h - sqrt( discriminant ) ) / a
         end if
 
     end function hit_sphere
