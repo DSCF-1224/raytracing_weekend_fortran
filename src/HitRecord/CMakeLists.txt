@@ -5,6 +5,6 @@ add_library(
 
 
 
-target_link_libraries( _raytracing_one_weekend _raytracing_vec3 )
+target_link_libraries( _raytracing_hit_record _raytracing_vec3 )
 
 # EOF
