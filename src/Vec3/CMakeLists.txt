@@ -7,6 +7,7 @@ add_library(
     length.f90
     module.f90
     mul.f90
+    neg.f90
     sub.f90
     unit_vector.f90
 )
