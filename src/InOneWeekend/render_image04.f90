@@ -31,7 +31,7 @@ submodule (raytracing_in_one_weekend) imp_render_image04
 
         type(ray_type), intent(in) :: ray
 
-        logical :: hit_sphere
+        real(real64) :: hit_sphere
 
 
 
@@ -47,7 +47,13 @@ submodule (raytracing_in_one_weekend) imp_render_image04
         c            =               dot_product( oc            , oc            ) - radius * radius
         discriminant = b * b - 4.0_real64 * a * c
 
-        hit_sphere   = ( discriminant .ge. 0.0_real64 )
+
+
+        if ( discriminant .lt. 0.0_real64 ) then
+            hit_sphere = -1.0_real64
+        else
+            hit_sphere = ( - b - sqrt( discriminant ) ) / ( 2.0_real64 * a )
+        end if
 
     end function hit_sphere
 
@@ -61,15 +67,32 @@ submodule (raytracing_in_one_weekend) imp_render_image04
 
 
 
-        real(real64) :: a
+        real(real64) :: a, t
 
         type(vec3_type) :: unit_direction
 
 
 
-        if ( hit_sphere( sphere_center, sphere_radius, ray ) ) then
-            color = color_red
+        t = hit_sphere( sphere_center, sphere_radius, ray )
+
+
+
+        if ( t .gt. 0.0_real64 ) then
+        block
+
+            type(vec3_type) :: n
+
+
+
+            n           = unit_vector( ray%at( t ) - sphere_center )
+            color%red   = n%x + 1.0_real64
+            color%green = n%y + 1.0_real64
+            color%blue  = n%z + 1.0_real64
+            color       = 0.5_real64 * color
+
             return
+
+        end block
         end if
 
 
