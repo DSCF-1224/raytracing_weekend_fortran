@@ -21,7 +21,7 @@ submodule (raytracing_sphere) imp_hit
         oc           = self%center - ray%origin
         a            = length_squared( ray%direction )
         h            = dot_product( ray%direction , oc )
-        c            = length_squared( oc ) - radius * radius
+        c            = length_squared( oc ) - self%radius * self%radius
         discriminant = h * h - a * c
 
 
