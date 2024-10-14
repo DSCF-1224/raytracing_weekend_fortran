@@ -14,6 +14,9 @@ module raytracing_hittable_list
 
 
     type :: hittable_list_type
+
+        type(hittable_list_item_type), allocatable, dimension(:), public :: item
+
     end type hittable_list_type
 
 end module raytracing_hittable_list
