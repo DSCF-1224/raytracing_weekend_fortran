@@ -11,7 +11,45 @@ submodule (raytracing_in_one_weekend) imp_render_image03
 
 
 
+    real(real64), parameter :: sphere_radius = 0.5_real64
+
+    type(color_type), parameter :: color_red = color_type( red = 1.0_real64, green = 0.0_real64, blue = 0.0_real64 )
+
+    type(vec3_type), parameter :: sphere_center = vec3_type( 0.0_real64, 0.0_real64, -1.0_real64 )
+
+
+
     contains
+
+
+
+    pure elemental function hit_sphere( center, radius, ray )
+
+        type(vec3_type), intent(in) :: center
+
+        real(real64), intent(in) :: radius
+
+        type(ray_type), intent(in) :: ray
+
+        logical :: hit_sphere
+
+
+
+        real(real64) :: a, b, c, discriminant
+
+        type(vec3_type) :: oc
+
+
+
+        oc           = center - ray%origin
+        a            =               dot_product( ray%direction , ray%direction )
+        b            = -2.0_real64 * dot_product( ray%direction , oc            )
+        c            =               dot_product( oc            , oc            ) - radius * radius
+        discriminant = b * b - 4.0_real64 * a * c
+
+        hit_sphere   = ( discriminant .ge. 0.0_real64 )
+
+    end function hit_sphere
 
 
 
@@ -26,6 +64,13 @@ submodule (raytracing_in_one_weekend) imp_render_image03
         real(real64) :: a
 
         type(vec3_type) :: unit_direction
+
+
+
+        if ( hit_sphere( sphere_center, sphere_radius, ray ) ) then
+            color = color_red
+            return
+        end if
 
 
 
