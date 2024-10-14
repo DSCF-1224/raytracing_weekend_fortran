@@ -1,5 +1,6 @@
 add_library(
     _raytracing_hittable_list_item
+    hit.f90
     module.f90
 )
 
