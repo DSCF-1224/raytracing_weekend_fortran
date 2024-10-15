@@ -4,10 +4,7 @@ module raytracing_hittable_list_item
     use, non_intrinsic :: raytracing_hit_record
     use, non_intrinsic :: raytracing_hittable
     use, non_intrinsic :: raytracing_ray
-<<<<<<< HEAD
     use, non_intrinsic :: raytracing_sphere
-=======
->>>>>>> feature_hittable_list
 
 
 
