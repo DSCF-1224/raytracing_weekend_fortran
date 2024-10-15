@@ -27,13 +27,28 @@ module raytracing_hittable_list_item
 
 
 
-        procedure, pass, public :: hit => hit_hittable_list_item
+        procedure, pass, private :: allocate_object
+        procedure, pass, public  :: hit             => hit_hittable_list_item
+
+
+
+        generic, public :: allocate => allocate_object
 
     end type hittable_list_item_type
 
 
 
     interface
+
+        module subroutine allocate_object( self, source )
+
+            class(hittable_list_item_type), intent(inout) :: self
+
+            class(hittable_class), intent(in) :: source
+
+        end subroutine allocate_object
+
+
 
         module subroutine hit_hittable_list_item( self, ray, t_min, t_max, hit_stat, hit_record )
 
