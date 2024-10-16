@@ -2,6 +2,7 @@ submodule (raytracing_in_one_weekend) imp_render_image05
 
     use, non_intrinsic :: raytracing_color
     use, non_intrinsic :: raytracing_hit_record
+    use, non_intrinsic :: raytracing_hittable_list
     use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_sphere
