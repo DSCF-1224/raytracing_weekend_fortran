@@ -28,13 +28,13 @@ module raytracing_hittable
 
     interface
 
-        module subroutine hit_abstract( self, ray, t_min, t_max, hit_stat, hit_record )
+        module subroutine hit_abstract( self, ray, ray_t, hit_stat, hit_record )
 
             class(hittable_class), intent(in) :: self
 
             type(ray_type), intent(in) :: ray
 
-            real(real64), intent(in) :: t_min, t_max
+            type(interval_type), intent(in) :: ray_t
 
             logical, intent(out) :: hit_stat
 
