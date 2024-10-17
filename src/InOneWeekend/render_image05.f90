@@ -16,21 +16,17 @@ submodule (raytracing_in_one_weekend) imp_render_image05
 
     type(color_type), parameter :: color_red = color_type( red = 1.0_real64, green = 0.0_real64, blue = 0.0_real64 )
 
-    type(sphere_type), parameter :: sphere = &!
-        sphere_type( &!
-            center = vec3_type( 0.0_real64, 0.0_real64, -1.0_real64 ) , &!
-            radius = 0.5_real64                                         &!
-        )
-
 
 
     contains
 
 
 
-    function ray_color( ray ) result( color )
+    function ray_color( ray, world ) result( color )
 
         type(ray_type), intent(in) :: ray
+
+        type(hittable_list_type), intent(in) :: world
 
         type(color_type) :: color
 
@@ -46,7 +42,7 @@ submodule (raytracing_in_one_weekend) imp_render_image05
 
 
 
-        call sphere%hit( &!
+        call world%hit( &!
             ray        = ray                , &!
             t_min      = 0.0_real64         , &!
             t_max      = huge( 0.0_real64 ) , &!
@@ -126,6 +122,8 @@ submodule (raytracing_in_one_weekend) imp_render_image05
         integer :: write_unit
         !! the unit number to save the rendered image
 
+        type(hittable_list_type) :: world
+
         type(vec3_type) :: pixel00_loc
         type(vec3_type) :: pixel_delta_u
         type(vec3_type) :: pixel_delta_v
@@ -145,6 +143,26 @@ submodule (raytracing_in_one_weekend) imp_render_image05
         pixel00_loc &!
             = viewport_upper_left &!
             + 0.5_real64 * ( pixel_delta_u + pixel_delta_v )
+
+
+
+        allocate( world%item( 2 ) )
+
+
+
+        call world%item( 1 )%allocate( &!
+            sphere_type( &!
+                center = vec3_type( x = 0.0_real64, y = 0.0_real64, z = -1.0_real64 ) , &!
+                radius = 0.5_real64                                                     &!
+            ) &!
+        )
+
+        call world%item( 2 )%allocate( &!
+            sphere_type( &!
+                center = vec3_type( x = 0.0_real64, y = -100.5_real64, z = -1.0_real64 ) , &!
+                radius = 100.0_real64                                                      &!
+            ) &!
+        )
 
 
 
@@ -200,7 +218,7 @@ submodule (raytracing_in_one_weekend) imp_render_image05
                 ray%origin    = camera_center
                 ray%direction = ray_direction
 
-                color = ray_color( ray )
+                color = ray_color( ray, world )
 
                 write( unit = write_unit, fmt = * ) color
 
