@@ -20,19 +20,18 @@ submodule (raytracing_hittable_list) imp_hit
 
         block
 
-            logical :: temp_hit_stat
+            logical :: hit_stat_item
 
             integer :: iter_item
 
             real(real64) :: closest_so_far
 
-            type(hit_record_type) :: temp_hit_record
+            type(hit_record_type) :: hit_record_item
 
 
 
-            temp_hit_stat = .false.
-
-            closest_so_far    = t_max
+            hit_stat       = .false.
+            closest_so_far = t_max
 
 
 
@@ -42,14 +41,14 @@ submodule (raytracing_hittable_list) imp_hit
                     ray        = ray             , &!
                     t_min      = t_min           , &!
                     t_max      = closest_so_far  , &!
-                    hit_stat   = temp_hit_stat   , &!
-                    hit_record = temp_hit_record   &!
+                    hit_stat   = hit_stat_item   , &!
+                    hit_record = hit_record_item   &!
                 )
 
-                if ( temp_hit_stat ) then
+                if ( hit_stat_item ) then
                     hit_stat       = .true.
-                    closest_so_far = temp_hit_record%t
-                    hit_record     = temp_hit_record
+                    closest_so_far = hit_record_item%t
+                    hit_record     = hit_record_item
                 end if
 
             end do
