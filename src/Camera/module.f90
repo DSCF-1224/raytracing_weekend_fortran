@@ -26,12 +26,34 @@ module raytracing_camera
         type(vec3_type), private :: pixel00_loc_
         !! Location of pixel 0, 0
 
-        type(vec3_type), private :: pixel_delta_u
+        type(vec3_type), private :: pixel_delta_u_
         !! Offset to pixel to the right
 
-        type(vec3_type), private :: pixel_delta_v
+        type(vec3_type), private :: pixel_delta_v_
         !! Offset to pixel below
 
+
+
+        contains
+
+
+
+        procedure, pass, private :: initialize_default
+
+        generic, public :: initialize => initialize_default
+
     end type camera_type
+
+
+
+    interface
+
+        module subroutine initialize_default( camera )
+
+            class(camera_type), intent(inout) :: camera
+
+        end subroutine initialize_default
+
+    end interface
 
 end module raytracing_camera
