@@ -39,8 +39,10 @@ module raytracing_camera
 
 
         procedure, pass, private :: initialize_default
+        procedure, pass, private :: initialize_manually
 
         generic, public :: initialize => initialize_default
+        generic, public :: initialize => initialize_manually
 
     end type camera_type
 
@@ -53,6 +55,20 @@ module raytracing_camera
             class(camera_type), intent(inout) :: camera
 
         end subroutine initialize_default
+
+
+
+        module subroutine initialize_manually( camera, image_width, aspect_ratio )
+
+            class(camera_type), intent(inout) :: camera
+
+            integer, intent(in) :: image_width
+            !! Rendered image width in pixel count
+
+            real(real64), intent(in) :: aspect_ratio
+            !! Ratio of image width over height
+
+        end subroutine initialize_manually
 
     end interface
 
