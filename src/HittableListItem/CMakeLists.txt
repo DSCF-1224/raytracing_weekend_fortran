@@ -9,6 +9,7 @@ add_library(
 
 target_link_libraries( _raytracing_hittable_list_item _raytracing_hit_record )
 target_link_libraries( _raytracing_hittable_list_item _raytracing_hittable   )
+target_link_libraries( _raytracing_hittable_list_item _raytracing_interval   )
 target_link_libraries( _raytracing_hittable_list_item _raytracing_ray        )
 target_link_libraries( _raytracing_hittable_list_item _raytracing_sphere     )
 

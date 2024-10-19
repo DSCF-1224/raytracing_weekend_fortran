@@ -3,6 +3,7 @@ module raytracing_sphere
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: raytracing_hit_record
     use, non_intrinsic :: raytracing_hittable
+    use, non_intrinsic :: raytracing_interval
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_vec3
 
@@ -35,13 +36,13 @@ module raytracing_sphere
 
     interface
 
-        module subroutine hit_sphere( self, ray, t_min, t_max, hit_stat, hit_record )
+        module subroutine hit_sphere( self, ray, ray_t, hit_stat, hit_record )
 
             class(sphere_type), intent(in) :: self
 
             type(ray_type), intent(in) :: ray
 
-            real(real64), intent(in) :: t_min, t_max
+            type(interval_type), intent(in) :: ray_t
 
             logical, intent(out) :: hit_stat
 
