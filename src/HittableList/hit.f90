@@ -28,19 +28,23 @@ submodule (raytracing_hittable_list) imp_hit
 
             type(hit_record_type) :: hit_record_item
 
+            type(interval_type) :: interval_item
+
 
 
             hit_stat       = .false.
-            closest_so_far = t_max
+            closest_so_far = ray_t%max
 
 
 
             do iter_item = 1, size( self%item(:) )
 
+                interval_item%min = ray_t%min
+                interval_item%max = closest_so_far
+
                 call self%item( iter_item )%hit( &!
                     ray        = ray             , &!
-                    t_min      = t_min           , &!
-                    t_max      = closest_so_far  , &!
+                    ray_t      = interval_item   , &!
                     hit_stat   = hit_stat_item   , &!
                     hit_record = hit_record_item   &!
                 )
