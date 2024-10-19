@@ -12,6 +12,7 @@ add_library(
 
 
 
+target_link_libraries( _raytracing_one_weekend _raytracing_camera        )
 target_link_libraries( _raytracing_one_weekend _raytracing_color         )
 target_link_libraries( _raytracing_one_weekend _raytracing_hittable      )
 target_link_libraries( _raytracing_one_weekend _raytracing_hittable_list )
