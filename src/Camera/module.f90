@@ -1,6 +1,10 @@
 module raytracing_camera
 
     use,     intrinsic :: iso_fortran_env
+    use, non_intrinsic :: raytracing_color
+    use, non_intrinsic :: raytracing_hittable
+    use, non_intrinsic :: raytracing_ppm_image
+    use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_vec3
 
 
@@ -40,6 +44,7 @@ module raytracing_camera
 
         procedure, pass, private :: initialize_default
         procedure, pass, private :: initialize_manually
+        procedure, pass, public  :: render
 
         generic, public :: initialize => initialize_default
         generic, public :: initialize => initialize_manually
@@ -49,6 +54,18 @@ module raytracing_camera
 
 
     interface
+
+        module function ray_color_t( ray, world ) result( color )
+
+            type(ray_type), intent(in) :: ray
+
+            class(hittable_class), intent(in) :: world
+
+            type(color_type) :: color
+
+        end function ray_color_t
+
+
 
         module subroutine initialize_default( camera )
 
@@ -69,6 +86,20 @@ module raytracing_camera
             !! Ratio of image width over height
 
         end subroutine initialize_manually
+
+
+
+        module subroutine render( camera, file, world, ray_color )
+
+            class(camera_type), intent(in) :: camera
+
+            character( len = * ), intent(in) :: file
+
+            class(hittable_class), intent(in) :: world
+
+            procedure(ray_color_t) :: ray_color
+
+        end subroutine render
 
     end interface
 
