@@ -3,6 +3,7 @@ submodule (raytracing_in_one_weekend) imp_render_image05
     use, non_intrinsic :: raytracing_color
     use, non_intrinsic :: raytracing_hit_record
     use, non_intrinsic :: raytracing_hittable_list
+    use, non_intrinsic :: raytracing_interval
     use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_sphere
@@ -15,6 +16,8 @@ submodule (raytracing_in_one_weekend) imp_render_image05
 
 
     type(color_type), parameter :: color_red = color_type( red = 1.0_real64, green = 0.0_real64, blue = 0.0_real64 )
+
+    type(interval_type), parameter :: ray_t = interval_type( min = 0.0_real64, max = huge( 0.0_real64 ) )
 
 
 
@@ -43,11 +46,10 @@ submodule (raytracing_in_one_weekend) imp_render_image05
 
 
         call world%hit( &!
-            ray        = ray                , &!
-            t_min      = 0.0_real64         , &!
-            t_max      = huge( 0.0_real64 ) , &!
-            hit_stat   = hit_stat           , &!
-            hit_record = hit_record           &!
+            ray        = ray        , &!
+            ray_t      = ray_t      , &!
+            hit_stat   = hit_stat   , &!
+            hit_record = hit_record   &!
         )
 
 

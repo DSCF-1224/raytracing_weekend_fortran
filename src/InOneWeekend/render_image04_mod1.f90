@@ -2,6 +2,7 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
     use, non_intrinsic :: raytracing_color
     use, non_intrinsic :: raytracing_hit_record
+    use, non_intrinsic :: raytracing_interval
     use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_sphere
@@ -41,16 +42,22 @@ submodule (raytracing_in_one_weekend) imp_render_image04_mod1
 
         type(hit_record_type) :: hit_record
 
+        type(interval_type) :: ray_t
+
         type(vec3_type) :: unit_direction
 
 
 
+        ray_t%min = 0.0_real64
+        ray_t%max = huge( ray_t%max )
+
+
+
         call sphere%hit( &!
-            ray        = ray                , &!
-            t_min      = 0.0_real64         , &!
-            t_max      = huge( 0.0_real64 ) , &!
-            hit_stat   = hit_stat           , &!
-            hit_record = hit_record           &!
+            ray        = ray        , &!
+            ray_t      = ray_t      , &!
+            hit_stat   = hit_stat   , &!
+            hit_record = hit_record   &!
         )
 
 
