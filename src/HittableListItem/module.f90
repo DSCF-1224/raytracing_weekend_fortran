@@ -3,11 +3,9 @@ module raytracing_hittable_list_item
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: raytracing_hit_record
     use, non_intrinsic :: raytracing_hittable
+    use, non_intrinsic :: raytracing_interval
     use, non_intrinsic :: raytracing_ray
-<<<<<<< HEAD
     use, non_intrinsic :: raytracing_sphere
-=======
->>>>>>> feature_hittable_list
 
 
 
@@ -53,13 +51,13 @@ module raytracing_hittable_list_item
 
 
 
-        module subroutine hit_hittable_list_item( self, ray, t_min, t_max, hit_stat, hit_record )
+        module subroutine hit_hittable_list_item( self, ray, ray_t, hit_stat, hit_record )
 
             class(hittable_list_item_type), intent(in) :: self
 
             type(ray_type), intent(in) :: ray
 
-            real(real64), intent(in) :: t_min, t_max
+            type(interval_type), intent(in) :: ray_t
 
             logical, intent(out) :: hit_stat
 

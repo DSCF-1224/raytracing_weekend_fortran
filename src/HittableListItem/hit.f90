@@ -16,8 +16,7 @@ submodule (raytracing_hittable_list_item) imp_hit
 
             call self%object%hit( &!
                 ray        = ray        , &!
-                t_min      = t_min      , &!
-                t_max      = t_max      , &!
+                ray_t      = ray_t      , &!
                 hit_stat   = hit_stat   , &!
                 hit_record = hit_record   &!
             )
