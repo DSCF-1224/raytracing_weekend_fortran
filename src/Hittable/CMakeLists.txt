@@ -5,6 +5,7 @@ add_library(
 
 
 
+target_link_libraries( _raytracing_hittable _raytracing_interval   )
 target_link_libraries( _raytracing_hittable _raytracing_hit_record )
 target_link_libraries( _raytracing_hittable _raytracing_ray        )
 
