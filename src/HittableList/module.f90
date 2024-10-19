@@ -4,6 +4,7 @@ module raytracing_hittable_list
     use, non_intrinsic :: raytracing_hit_record
     use, non_intrinsic :: raytracing_hittable
     use, non_intrinsic :: raytracing_hittable_list_item
+    use, non_intrinsic :: raytracing_interval
     use, non_intrinsic :: raytracing_ray
 
 
@@ -35,13 +36,13 @@ module raytracing_hittable_list
 
     interface
 
-        module subroutine hit_hittable_list( self, ray, t_min, t_max, hit_stat, hit_record )
+        module subroutine hit_hittable_list( self, ray, ray_t, hit_stat, hit_record )
 
             class(hittable_list_type), intent(in) :: self
 
             type(ray_type), intent(in) :: ray
 
-            real(real64), intent(in) :: t_min, t_max
+            type(interval_type), intent(in) :: ray_t
 
             logical, intent(out) :: hit_stat
 

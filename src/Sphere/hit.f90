@@ -41,16 +41,16 @@ submodule (raytracing_sphere) imp_hit
 
 
 
-            if ( ( root .le. t_min ) .or. ( t_max .le. root ) ) then
-    
+            if ( ( root .le. ray_t%min ) .or. ( ray_t%max .le. root ) ) then
+
                 root = ( h + sqrt_discriminant ) / a
-    
-                if ( ( root .le. t_min ) .or. ( t_max .le. root ) ) then
-    
+
+                if ( ( root .le. ray_t%min ) .or. ( ray_t%max .le. root ) ) then
+
                     return
-    
+
                 end if
-    
+
             end if
 
         end block
