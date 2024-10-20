@@ -2,7 +2,7 @@ module raytracing_camera
 
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: raytracing_color
-    use, non_intrinsic :: raytracing_hittable
+    use, non_intrinsic :: raytracing_hittable_list
     use, non_intrinsic :: raytracing_ppm_image
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_vec3
@@ -64,7 +64,7 @@ module raytracing_camera
 
             type(ray_type), intent(in) :: ray
 
-            class(hittable_class), intent(in) :: world
+            type(hittable_list_type), intent(in) :: world
 
             type(color_type) :: color
 
@@ -100,7 +100,7 @@ module raytracing_camera
 
             character( len = * ), intent(in) :: file
 
-            class(hittable_class), intent(in) :: world
+            type(hittable_list_type), intent(in) :: world
 
             procedure(ray_color_t) :: ray_color
 
