@@ -13,6 +13,11 @@ module raytracing_camera
 
 
 
+    private
+    public  :: camera_type
+
+
+
     type :: camera_type
 
         integer, private :: image_height_
