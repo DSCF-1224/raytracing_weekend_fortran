@@ -4,6 +4,10 @@ submodule (raytracing_color) imp_write_formatted
 
 
 
+    type(interval_type), parameter :: intensity = interval_type( min = 0.0_real64, max = 1.0_real64 )
+
+
+
     contains
 
 
@@ -58,9 +62,9 @@ submodule (raytracing_color) imp_write_formatted
             iostat = iostat          , &!
             iomsg  = iomsg(:)          &!
         ) &!
-            floor( white_point * color%red   ) , &!
-            floor( white_point * color%green ) , &!
-            floor( white_point * color%blue  )
+            floor( white_point * intensity%clamp( color%red   ) ) , &!
+            floor( white_point * intensity%clamp( color%green ) ) , &!
+            floor( white_point * intensity%clamp( color%blue  ) )
 
     end subroutine write_color_default
 
