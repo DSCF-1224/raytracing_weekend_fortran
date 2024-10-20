@@ -2,6 +2,7 @@ add_library(
     _raytracing_camera
     initialize.f90
     module.f90
+    render.f90
 )
 
 
