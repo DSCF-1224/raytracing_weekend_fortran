@@ -24,6 +24,7 @@ module raytracing_interval
 
 
 
+        procedure, pass, public :: clamp
         procedure, pass, public :: surrounds
 
     end type interval_type
@@ -31,6 +32,18 @@ module raytracing_interval
 
 
     interface
+
+        module pure elemental function clamp( interval, x )
+
+            class(interval_type), intent(in) :: interval
+
+            real(real64), intent(in) :: x
+
+            real(real64) :: clamp
+
+        end function clamp
+
+
 
         module pure elemental function surrounds( interval, x )
 
