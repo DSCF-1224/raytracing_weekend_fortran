@@ -1,0 +1,2 @@
+module raytracing_random_number
+end module raytracing_random_number
