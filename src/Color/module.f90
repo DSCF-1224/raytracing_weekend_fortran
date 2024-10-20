@@ -1,6 +1,7 @@
 module raytracing_color
 
-    use, intrinsic :: iso_fortran_env
+    use,     intrinsic :: iso_fortran_env
+    use, non_intrinsic :: raytracing_interval
 
 
 

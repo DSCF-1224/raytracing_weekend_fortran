@@ -6,4 +6,8 @@ add_library(
     write_formatted.f90
 )
 
+
+
+target_link_libraries( _raytracing_color _raytracing_interval )
+
 # EOF
