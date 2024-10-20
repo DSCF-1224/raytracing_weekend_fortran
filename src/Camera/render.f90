@@ -28,11 +28,11 @@ submodule (raytracing_camera) imp_render
 
 
         open( &!
-            newunit = write_unit    , &!
-            file    = 'image05.ppm' , &!
-            action  = 'write'       , &!
-            form    = 'formatted'   , &!
-            status  = 'unknown'       &!
+            newunit = write_unit  , &!
+            file    = file        , &!
+            action  = 'write'     , &!
+            form    = 'formatted' , &!
+            status  = 'unknown'     &!
         )
 
 
