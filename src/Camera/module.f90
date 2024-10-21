@@ -4,6 +4,7 @@ module raytracing_camera
     use, non_intrinsic :: raytracing_color
     use, non_intrinsic :: raytracing_hittable_list
     use, non_intrinsic :: raytracing_ppm_image
+    use, non_intrinsic :: raytracing_random_number
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_vec3
 
