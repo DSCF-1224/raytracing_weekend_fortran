@@ -108,8 +108,9 @@ submodule (raytracing_in_one_weekend) imp_render_image05_mod1
 
 
         call camera%initialize( &!
-            image_width  = 400                      , &!
-            aspect_ratio = 16.0_real64 / 9.0_real64   &!
+            image_width       = 400                      , &!
+            aspect_ratio      = 16.0_real64 / 9.0_real64 , &!
+            samples_per_pixel = 100                        &!
         )
 
 
