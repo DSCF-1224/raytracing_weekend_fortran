@@ -90,8 +90,9 @@ submodule (raytracing_camera) imp_initialize
 
     module procedure initialize_manually
 
-        camera%image_width_  = image_width
-        camera%aspect_ratio_ = aspect_ratio
+        camera%image_width_       = image_width
+        camera%aspect_ratio_      = aspect_ratio
+        camera%samples_per_pixel_ = samples_per_pixel
 
         call camera%initialize()
 

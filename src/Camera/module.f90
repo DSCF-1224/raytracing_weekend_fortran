@@ -91,7 +91,7 @@ module raytracing_camera
 
 
 
-        module subroutine initialize_manually( camera, image_width, aspect_ratio )
+        module subroutine initialize_manually( camera, image_width, aspect_ratio, samples_per_pixel )
 
             class(camera_type), intent(inout) :: camera
 
@@ -100,6 +100,9 @@ module raytracing_camera
 
             real(real64), intent(in) :: aspect_ratio
             !! Ratio of image width over height
+
+            integer, intent(in) :: samples_per_pixel
+            !! Count of random samples for each pixel
 
         end subroutine initialize_manually
 
