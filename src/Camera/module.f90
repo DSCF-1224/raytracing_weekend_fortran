@@ -4,6 +4,7 @@ module raytracing_camera
     use, non_intrinsic :: raytracing_color
     use, non_intrinsic :: raytracing_hittable_list
     use, non_intrinsic :: raytracing_ppm_image
+    use, non_intrinsic :: raytracing_random_number
     use, non_intrinsic :: raytracing_ray
     use, non_intrinsic :: raytracing_vec3
 
@@ -26,8 +27,18 @@ module raytracing_camera
         integer, private :: image_width_ = 100
         !! Rendered image width in pixel count
 
+        integer, private :: samples_per_pixel_ = 10
+        !! Count of random samples for each pixel
+
+
+
         real(real64), private :: aspect_ratio_ = 1.0_real64
         !! Ratio of image width over height
+
+        real(real64), private :: pixel_samples_scale_
+        !! Color scale factor for a sum of pixel samples
+
+
 
         type(vec3_type), private :: center_
         !! Camera center
@@ -80,7 +91,7 @@ module raytracing_camera
 
 
 
-        module subroutine initialize_manually( camera, image_width, aspect_ratio )
+        module subroutine initialize_manually( camera, image_width, aspect_ratio, samples_per_pixel )
 
             class(camera_type), intent(inout) :: camera
 
@@ -89,6 +100,9 @@ module raytracing_camera
 
             real(real64), intent(in) :: aspect_ratio
             !! Ratio of image width over height
+
+            integer, intent(in) :: samples_per_pixel
+            !! Count of random samples for each pixel
 
         end subroutine initialize_manually
 
