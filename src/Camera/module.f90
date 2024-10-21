@@ -27,8 +27,18 @@ module raytracing_camera
         integer, private :: image_width_ = 100
         !! Rendered image width in pixel count
 
+        integer, private :: samples_per_pixel_ = 10
+        !! Count of random samples for each pixel
+
+
+
         real(real64), private :: aspect_ratio_ = 1.0_real64
         !! Ratio of image width over height
+
+        real(real64), private :: pixel_samples_scale_
+        !! Color scale factor for a sum of pixel samples
+
+
 
         type(vec3_type), private :: center_
         !! Camera center
