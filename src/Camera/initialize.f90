@@ -35,6 +35,10 @@ submodule (raytracing_camera) imp_initialize
 
 
 
+        camera%pixel_samples_scale_ = 1.0_real64 / camera%samples_per_pixel_
+
+
+
         camera%center_%x = 0.0_real64
         camera%center_%y = 0.0_real64
         camera%center_%z = 0.0_real64
