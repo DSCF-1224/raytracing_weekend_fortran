@@ -120,6 +120,14 @@ module raytracing_camera
 
         end subroutine render
 
+
+
+        module subroutine sample_square( harvest )
+
+            type(vec3_type), intent(out) :: harvest
+
+        end subroutine sample_square
+
     end interface
 
 end module raytracing_camera

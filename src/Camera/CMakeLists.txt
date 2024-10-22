@@ -3,6 +3,7 @@ add_library(
     initialize.f90
     module.f90
     render.f90
+    sample_square.f90
 )
 
 
