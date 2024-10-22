@@ -58,6 +58,7 @@ module raytracing_camera
 
 
 
+        procedure, pass, private :: get_ray
         procedure, pass, private :: initialize_default
         procedure, pass, private :: initialize_manually
         procedure, pass, public  :: render
@@ -70,6 +71,21 @@ module raytracing_camera
 
 
     interface
+
+        module function get_ray( camera, index_w, index_h ) result( ray )
+        !! Construct a camera ray
+        !! originating from the origin
+        !! and directed at randomly sampled point around the pixel location `index_w`, `index_h`.
+
+            class(camera_type), intent(in) :: camera
+
+            integer, intent(in) :: index_w, index_h
+
+            type(ray_type) :: ray
+
+        end function get_ray
+
+
 
         module function ray_color_t( ray, world ) result( color )
 
