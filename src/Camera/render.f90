@@ -67,6 +67,8 @@ submodule (raytracing_camera) imp_render
             do iter_w = 0, iter_w_max
             block
 
+                integer :: iter_s
+
                 type(color_type) :: color
                 type(ray_type)   :: ray
                 type(vec3_type)  :: pixel_center
@@ -74,19 +76,32 @@ submodule (raytracing_camera) imp_render
 
 
 
-                pixel_center &!
-                    = camera%pixel00_loc_                &!
-                    + ( iter_w * camera%pixel_delta_u_ ) &!
-                    + ( iter_h * camera%pixel_delta_v_ )
+                color%red   = 0.0_real64
+                color%green = 0.0_real64
+                color%blue  = 0.0_real64
 
-                ray_direction = pixel_center - camera%center_
 
-                ray%origin    = camera%center_
-                ray%direction = ray_direction
 
-                color = ray_color( ray, world )
+                do iter_s = 1, camera%samples_per_pixel_
 
-                write( unit = write_unit, fmt = * ) color
+                    pixel_center &!
+                        = camera%pixel00_loc_                &!
+                        + ( iter_w * camera%pixel_delta_u_ ) &!
+                        + ( iter_h * camera%pixel_delta_v_ )
+
+                    ray_direction = pixel_center - camera%center_
+
+                    ray%origin    = camera%center_
+                    ray%direction = ray_direction
+
+                    color = &!
+                    color + ray_color( ray, world )
+
+                end do
+
+
+
+                write( unit = write_unit, fmt = * ) camera%pixel_samples_scale_ * color
 
             end block
             end do
