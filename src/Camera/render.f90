@@ -71,8 +71,6 @@ submodule (raytracing_camera) imp_render
 
                 type(color_type) :: color
                 type(ray_type)   :: ray
-                type(vec3_type)  :: pixel_center
-                type(vec3_type)  :: ray_direction
 
 
 
@@ -84,15 +82,7 @@ submodule (raytracing_camera) imp_render
 
                 do iter_s = 1, camera%samples_per_pixel_
 
-                    pixel_center &!
-                        = camera%pixel00_loc_                &!
-                        + ( iter_w * camera%pixel_delta_u_ ) &!
-                        + ( iter_h * camera%pixel_delta_v_ )
-
-                    ray_direction = pixel_center - camera%center_
-
-                    ray%origin    = camera%center_
-                    ray%direction = ray_direction
+                    ray = camera%get_ray( index_w = iter_w, index_h = iter_h )
 
                     color = &!
                     color + ray_color( ray, world )
