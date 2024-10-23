@@ -1,8 +1,10 @@
 add_library(
     _raytracing_camera
+    get_ray.f90
     initialize.f90
     module.f90
     render.f90
+    sample_square.f90
 )
 
 
