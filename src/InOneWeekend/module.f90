@@ -15,7 +15,7 @@ module raytracing_in_one_weekend
     public  :: render_image04
     public  :: render_image04_mod1
     public  :: render_image05
-    public  :: render_image05_mod1
+    public  :: render_image06
 
 
 
@@ -51,8 +51,8 @@ module raytracing_in_one_weekend
 
 
 
-        module subroutine render_image05_mod1
-        end  subroutine render_image05_mod1
+        module subroutine render_image06
+        end  subroutine render_image06
 
     end interface
 

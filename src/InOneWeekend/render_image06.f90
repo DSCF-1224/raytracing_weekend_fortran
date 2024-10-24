@@ -1,4 +1,4 @@
-submodule (raytracing_in_one_weekend) imp_render_image05_mod1
+submodule (raytracing_in_one_weekend) imp_render_image06
 
     use, non_intrinsic :: raytracing_camera
     use, non_intrinsic :: raytracing_color
@@ -79,7 +79,7 @@ submodule (raytracing_in_one_weekend) imp_render_image05_mod1
 
 
 
-    module procedure render_image05_mod1
+    module procedure render_image06
 
         type(camera_type) :: camera
 
@@ -116,11 +116,11 @@ submodule (raytracing_in_one_weekend) imp_render_image05_mod1
 
 
         call camera%render( &!
-            file      = 'image05_mod1.ppm', &!
-            world     = world             , &!
-            ray_color = ray_color           &!
+            file      = 'image06.ppm', &!
+            world     = world        , &!
+            ray_color = ray_color      &!
         )
 
-    end procedure render_image05_mod1
+    end procedure render_image06
 
-end submodule imp_render_image05_mod1
+end submodule imp_render_image06
